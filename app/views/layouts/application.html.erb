@@ -13,8 +13,18 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
+    <!-- jQuery -->
+    <link rel="stylesheet" href="<%= asset_path 'jquery-3.3.1.min.js' %>">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="<%= asset_path 'bootstrap.min.css' %>">
+    <script src="<%= asset_path 'bootstrap.min.js' %>"></script>
+
+    <!-- Shards -->
+    <link rel="stylesheet" href="<%= asset_path 'shards.min.css' %>">
+    <script src="<%= asset_path 'shards.min.js' %>"></script>
+  </head>
   <body>
     <%= yield %>
   </body>
