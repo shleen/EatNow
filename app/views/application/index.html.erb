@@ -1,14 +1,14 @@
 <p>index.html.erb</p>
 
-<%= form_tag payment_index_path, method: :post do %>
+<%= form_tag payment_index_path, method: :post, id:"pay" do %>
 <%= hidden_field_tag :amt, '9.99' %>
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="pk_test_4pr3WUC23dR5KqMMw6vpJw0z"
     data-amount="999"
     data-name="EatNow"
-    data-description="Example charge"
-    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-description="giv me ur  $$"
+    data-image="<%= asset_path 'icon.png' %>"
     data-locale="auto"
     data-currency="sgd">
   </script>
