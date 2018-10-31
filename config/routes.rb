@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'application#index'
+
+  devise_for :users
+
+  resources :payment do
+    collection do
+      post 'create_card'
+    end
+  end
 end
