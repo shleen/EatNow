@@ -17,6 +17,8 @@ gem 'duktape'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+# Environment variables
+gem 'dotenv-rails', groups: %i[development test]
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -30,6 +32,9 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Devise for authentication
 gem 'devise'
+
+# Use the Stripe gem to facilitate payment with Stripe
+gem 'stripe'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
