@@ -33,6 +33,9 @@ gem 'dotenv-rails', groups: %i[development test]
 # Use Devise for authentication
 gem 'devise'
 
+# Use the Stripe gem to facilitate payment with Stripe
+gem 'stripe'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

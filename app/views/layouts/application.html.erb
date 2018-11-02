@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="manifest" href="<%= asset_path('manifest.json.erb') %>">
+    <link rel="manifest" href="<%= asset_path('manifest.json') %>">
     <link rel="apple-touch-icon" sizes="512x512" href="<%= asset_path('icons/icon-512x512.png') %>">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -26,6 +26,10 @@
     <script src="<%= asset_path 'shards.min.js' %>"></script>
   </head>
   <body>
+    <!-- Don't load navbar on Devise views -->
+    <% if !current_class?('users') %>
+      <%= render 'navigation/navbar' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
