@@ -14,7 +14,6 @@ class StripeService
   private
 
   def bill(params)
-    Rails.logger.info "\n\n\n#{params[:amt]}\n\n\n"
     Stripe::Charge.create(
       :amount => ((params[:amt]).to_f*100).to_i,
       :currency => "sgd",

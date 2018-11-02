@@ -26,6 +26,10 @@
     <script src="<%= asset_path 'shards.min.js' %>"></script>
   </head>
   <body>
+    <!-- Don't load navbar on Devise views -->
+    <% if !current_class?('users') %>
+      <%= render 'navigation/navbar' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
