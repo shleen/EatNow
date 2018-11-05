@@ -1,0 +1,26 @@
+<p>new.html.erb</p>
+
+<video autoplay playsinline></video>
+
+<script>
+  const constraints = {video: true};
+  const video = $('video');
+
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // Looks like we have support, so start camera
+    navigator.mediaDevices.getUserMedia(constraints)
+      .then(handleSuccess).catch(handleError);
+  }
+  else {
+    alert("man! ur browser isn't supported...");
+  }
+
+  function handleSuccess(stream) {
+    window.stream = stream; // only to make stream available to console
+    video.srcObject = stream;
+  }
+
+  function handleError(error) {
+    alert('getUserMedia error: ', error);
+  }
+</script>

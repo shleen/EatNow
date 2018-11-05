@@ -8,4 +8,6 @@ Rails.application.routes.draw do
       post 'create_card'
     end
   end
+
+  resource :collection
 end
