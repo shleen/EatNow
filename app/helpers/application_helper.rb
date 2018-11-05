@@ -6,6 +6,6 @@ module ApplicationHelper
 
   # returns type of device- mobile or desktop
   def iphone?
-    puts request.user_agent =~ /iPhone/i
+    request.user_agent =~ /iPhone/i
   end
 end

@@ -1,26 +1,44 @@
 <p>new.html.erb</p>
 
-<video autoplay playsinline></video>
+<% if iphone? %>
+  <div class='container text-center'>
+    <div class='row mt-5'>
+        <div class='col-md-12'>
+          <h3>Your order is ready!</h3>
+          <h6 class='text-muted'>Head to any collection point now.</h6>
+        </div>
+    </div>
+    <div class='row mt-5'>
+      <div class='col-md-12'>
+        <button type='button' class='btn btn-secondary'>I'm at a collection point!</button>
+      </div>
+    </div>
+    <div class='row mt-5 collection-points'>
+    </div>
+  </div>
+<% else %>
+  <video autoplay playsinline></video>
 
-<script>
-  const constraints = {video: true};
-  const video = $('video');
+  <script>
+    const constraints = {video: true};
+    const video = $('video');
 
-  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    // Looks like we have support, so start camera
-    navigator.mediaDevices.getUserMedia(constraints)
-      .then(handleSuccess).catch(handleError);
-  }
-  else {
-    alert("man! ur browser isn't supported...");
-  }
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      // Looks like we have support, so start camera
+      navigator.mediaDevices.getUserMedia(constraints)
+        .then(handleSuccess).catch(handleError);
+    }
+    else {
+      alert("man! ur browser isn't supported...");
+    }
 
-  function handleSuccess(stream) {
-    window.stream = stream; // only to make stream available to console
-    video.srcObject = stream;
-  }
+    function handleSuccess(stream) {
+      window.stream = stream; // only to make stream available to console
+      video.srcObject = stream;
+    }
 
-  function handleError(error) {
-    alert('getUserMedia error: ', error);
-  }
-</script>
+    function handleError(error) {
+      alert('getUserMedia error: ', error);
+    }
+  </script>
+<% end %>
