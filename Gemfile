@@ -25,6 +25,8 @@ gem 'dotenv-rails', groups: %i[development test]
 # gem 'bcrypt', '~> 3.1.7'
 # Use HTTParty for ez http requests
 gem 'httparty'
+# Use friendly_id to use hash_id
+gem 'friendly_id'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
