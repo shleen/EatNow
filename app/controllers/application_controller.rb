@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
 
   def set_up_instance_variables
     # Raspberry PI URL
-    @RPI = "https://d3116b87.ngrok.io"
+    @RPI = "https://httpbin.org/post"
   end
 end

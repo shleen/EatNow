@@ -1,11 +1,12 @@
 class CollectionsController < ApplicationController
   def new
     @collection_points = CollectionPoint.all
+    @o = current_user.orders.first
   end
 
   def create
     # get collection point record
-    c_pt = CollectionPoint.find(params[:number])
+    c_pt = CollectionPoint.find(collection_params[:number])
 
     # no collection point found
     if c_pt.nil?
@@ -17,10 +18,20 @@ class CollectionsController < ApplicationController
       body: {
         number: c_pt.number,
         x: c_pt.x,
-        y: c_pt.y
+        y: c_pt.y,
+        order_id: collection_params[:order_id]
       }
     }
 
-    HTTParty.post(@RPI, options)
+    res = HTTParty.post(@RPI, options)
+    puts res.body
+
+    redirect_back fallback_location: root_path
+  end
+
+  private
+
+  def collection_params
+    params.permit(:number, :order_id)
   end
 end
