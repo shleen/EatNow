@@ -10,12 +10,29 @@
     </div>
     <div class='row mt-5'>
       <div class='col-md-12'>
-        <button type='button' class='btn btn-secondary'>I'm at a collection point!</button>
+        <button type='button' class='btn btn-secondary btn-collection-point'>I'm at a collection point!</button>
       </div>
     </div>
-    <div class='row mt-5 collection-points'>
+    <div class='collection-points'>
+      <div class='row mt-5'>
+        <div class='col-md-12'>
+          <h6>Select the collection point you're at!</h6>
+        </div>
+        <% @collection_points.each do |c| %>
+          <div class='col-6 mt-3'>
+            <%= link_to c.number, collection_path(number: c.number), method: :post, class: "btn btn-secondary w-75" %>
+            
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
+
+  <script>
+    $('button.btn-collection-point').on('click', () => {
+      $('.collection-points').show();
+    });
+  </script>
 <% else %>
   <video autoplay playsinline></video>
 
