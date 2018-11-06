@@ -7,6 +7,9 @@
           <h3>Your order is ready!</h3>
           <h6 class='text-muted'>Head to any collection point now.</h6>
         </div>
+        <div class='col-md-12'>
+          <p class='text-muted'>Order ID: <%= Order.find(rand(Model.count)).hash_id %></p>
+        </div>
     </div>
     <div class='row mt-5'>
       <div class='col-md-12'>
@@ -21,7 +24,6 @@
         <% @collection_points.each do |c| %>
           <div class='col-6 mt-3'>
             <%= link_to c.number, collection_path(number: c.number), method: :post, class: "btn btn-secondary w-75" %>
-            
           </div>
         <% end %>
       </div>
