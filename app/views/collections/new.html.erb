@@ -1,4 +1,4 @@
-<% if iphone? %>
+<% if true %>
   <div class='container text-center'>
     <div class='row mt-5'>
         <div class='col-md-12'>
@@ -34,28 +34,28 @@
     });
   </script>
 <% else %>
-  <video autoplay playsinline></video>
-
+  <video autoplay></video>
   <script>
-    const constraints = {video: true};
-    const video = $('video');
+      navigator.getUserMedia = navigator.getUserMedia ||
+                               navigator.webkitGetUserMedia ||
+                               navigator.mozGetUserMedia;
 
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      // Looks like we have support, so start camera
-      navigator.mediaDevices.getUserMedia(constraints)
-        .then(handleSuccess).catch(handleError);
-    }
-    else {
-      alert("man! ur browser isn't supported...");
-    }
-
-    function handleSuccess(stream) {
-      window.stream = stream; // only to make stream available to console
-      video.srcObject = stream;
-    }
-
-    function handleError(error) {
-      alert('getUserMedia error: ', error);
-    }
+      if (navigator.getUserMedia) {
+         navigator.getUserMedia({ audio: false, video: true },
+            function(stream) {
+               var video = document.querySelector('video');
+               video.srcObject = stream;
+               video.onloadedmetadata = function(e) {
+                 video.play();
+               };
+               video.play();
+            },
+            function(err) {
+               console.log("The following error occured: " + err.name);
+            }
+         );
+      } else {
+         console.log("getUserMedia not supported");
+      }
   </script>
 <% end %>
