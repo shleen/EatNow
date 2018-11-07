@@ -1,4 +1,17 @@
 <p>index.html.erb</p>
+<%@menu_items.each do |m| %>
+<div class="card" style="width: 20rem;">
+  <!-- <img class="card-img-top" src="" alt="Card image cap">-->
+  <div class="card-body">
+    <h4 class="card-title"><%=m.name%></h4>
+    <p class="card-text">
+      <%="Price: #{m.price}"%><br>
+      <%="Waiting Time: #{m.waiting_time}"%><br>
+      <%="Halal: #{m.halal}"%><br>
+      <%="vegetarian: #{m.vegetarian}"%><br></p>
+    </div>
+</div>
+<% end %>
 
 <!-- Modal for payment -->
 <div class="modal fade" id="makePayment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
