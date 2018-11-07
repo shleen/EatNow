@@ -3,4 +3,9 @@ module ApplicationHelper
   def current_class?(test_class)
     request.path.split('/')[1] == test_class
   end
+
+  # returns type of device- mobile or desktop
+  def iphone?
+    request.user_agent =~ /iPhone/i
+  end
 end

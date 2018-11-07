@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_01_031116) do
+ActiveRecord::Schema.define(version: 2018_11_06_084331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "collection_points", force: :cascade do |t|
+    t.integer "number", null: false
+    t.integer "total_collections", default: 0
+    t.integer "x"
+    t.integer "y"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "menu_items", force: :cascade do |t|
     t.string "name", null: false
@@ -26,6 +35,15 @@ ActiveRecord::Schema.define(version: 2018_11_01_031116) do
   create_table "menus", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "hash_id"
+    t.float "price"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hash_id"], name: "index_orders_on_hash_id"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -46,4 +64,5 @@ ActiveRecord::Schema.define(version: 2018_11_01_031116) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "orders", "users"
 end
