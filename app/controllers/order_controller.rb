@@ -1,5 +1,7 @@
 class OrderController < ApplicationController
   def new
+    @storeList = Store.all;
+    @menuItems = MenuItem.all
     o = Order.new
 
     o.price = rand(1..10)
