@@ -1,0 +1,10 @@
+<p>Order count: <%= @orders.count %></p>
+<p>Order Item count: <%= @order_items.count %></p>
+
+<% @order_items.each do |o| %>
+  <div class='order'>
+    <% o.each do |oi| %>
+      <p><%= oi.menu_item.name %></p>
+    <% end %>
+  </div>
+<% end %>
