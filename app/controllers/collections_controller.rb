@@ -1,7 +1,8 @@
 class CollectionsController < ApplicationController
   def new
     @collection_points = CollectionPoint.all
-    @o = Order.new
+    @o = current_user.orders.first
+    @o = Order.new if @o.nil?
   end
 
   def create
