@@ -9,7 +9,8 @@
       <li class="nav-item active">
         <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
       </li>
-      <% if current_user.user_type == 'customer' %>
+      <% if current_user.type == 'Staff' %>
+      <% else %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           temp
@@ -20,7 +21,7 @@
         </div>
       </li>
       <% end %>
-      <% if current_user.user_type == 'admin' %>
+      <% if current_user.admin %>
         <li class='nav-item'><a class='nav-link text-danger'>Admin</a></li>
       <% end %>
     </ul>
