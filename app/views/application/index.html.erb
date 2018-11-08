@@ -1,14 +1,14 @@
 <p>index.html.erb</p>
-<%@menu_items.each do |m| %>
+<%@menu_items.each do |mi| %>
 <div class="card" style="width: 20rem;">
   <!-- <img class="card-img-top" src="" alt="Card image cap">-->
   <div class="card-body">
-    <h4 class="card-title"><%=m.name%></h4>
+    <h4 class="card-title"><%=mi.name%></h4>
     <p class="card-text">
-      <%="Price: #{m.price}"%><br>
-      <%="Waiting Time: #{m.waiting_time}"%><br>
-      <%="Halal: #{m.halal}"%><br>
-      <%="vegetarian: #{m.vegetarian}"%><br></p>
+      <%="Price: #{mi.price}"%><br>
+      <%="Processing Time: #{mi.waiting_time}"%><br>
+      <%="Halal: #{mi.halal}"%><br>
+      <%="vegetarian: #{mi.vegetarian}"%><br></p>
     </div>
 </div>
 <% end %>
