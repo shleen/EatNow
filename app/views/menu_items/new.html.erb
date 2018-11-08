@@ -1,0 +1,48 @@
+<html>
+  <head>
+
+  </head>
+  <body>
+    <h1>Add Menu Item</h1>
+    <div>
+      <%= form_tag menu_items_path, method: :post do %>
+      <table>
+        <tr>
+          <th>Item name: </th>
+          <td><input type="text" name="name"></td>
+
+        </tr>
+        <tr>
+          <th>Item price</th>
+          <td><input type="number" name="price" step="0.01" min=0></td>
+        </tr>
+        <tr>
+          <th>Average waiting time</th>
+          <td><input type="number" name="waiting_time" step="0.5" min=0></td>
+        </tr>
+        <tr>
+          <th>Item type: </th>
+          <td>
+            <select name="iType">
+              <option value="food">Food</option>
+              <option value="drink">Drink</option>
+              <option value="snack">Snack</option>
+              <option value="combo">Combo</option>
+              <option value="other">Other</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+            <input type="checkbox" name="halal" value="halal">Halal<br>
+            <input type="checkbox" name="vegetarian" value="vegetarian">Vegetarian<br>
+          </td>
+        </tr>
+      </table>
+      <input type="reset">
+      <input type="submit">
+      <% end %>
+    </div>
+  </body>
+</html>
