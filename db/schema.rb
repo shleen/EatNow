@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 2018_11_06_084331) do
     t.datetime "waiting_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "halal", default: false
+    t.boolean "vegetarian", default: false
+    t.string "desc"
   end
 
   create_table "menus", force: :cascade do |t|

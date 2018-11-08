@@ -1,0 +1,3 @@
+class CustomerPreOrder < ApplicationRecord
+
+end
