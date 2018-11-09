@@ -1,0 +1,17 @@
+<!-- Pre-Order Container -->
+<div class="mainContainer">
+  <!-- Menu toggle for mobile version -->
+  <button class="action action--open" aria-label="Open Menu"><span class="icon icon--menu"></span></button>
+  <!-- Menu -->
+  <nav id="ml-menu" class="menu">
+    <!-- Close button for mobile version -->
+    <button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
+    <div class="menuWrap">
+      <% @storeList.each do |fcl| %>
+      <ul class="menuLevel">
+        <li class="menuItem"><a class="menuLink" href="#"><%="#{fcl.name}"%></a></li>
+      </ul>
+      <% end %>
+    </div>
+  </nav>
+</div>

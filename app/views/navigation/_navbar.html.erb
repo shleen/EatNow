@@ -20,6 +20,9 @@
           <%= link_to "Collect Food", new_collection_path, class: "dropdown-item" %>
         </div>
       </li>
+      <li class="nav-item">
+        <%= link_to "Create Order", new_order_path, class: "nav-link" %>
+      </li>
       <% end %>
       <% if current_user.admin %>
         <li class='nav-item'><a class='nav-link text-danger'>Admin</a></li>
