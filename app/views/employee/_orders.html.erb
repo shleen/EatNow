@@ -17,11 +17,26 @@
 </div>
 
 <script>
+  removeCompletedOrders = () => {
+    $('.order-container').each(function() {
+      if (!$(this).html().trim())
+      {
+        $(this).remove();
+      }
+    })
+  }
+
   mc = $('.order-item').hammer();
   mc.on('swipe', function(ev) {
-      $(this).animate({left: $('html').outerWidth()},350, () => {
+      const animation = {
+        left: $('html').outerWidth(),
+        background: 'green'
+      }
+      $(this).animate(animation,350, () => {
           $(this).remove();
+          removeCompletedOrders();
+
+          // TODO: Update DB of completed order item/ order
       });
-      console.log(ev);
   });
 </script>

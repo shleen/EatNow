@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def index
     if current_user.type == 'Staff'
-      @orders = Order.all
+      @orders = Order.all.order(created_at: :asc)
       @order_items = []
       @orders.each do |o|
         items = []
