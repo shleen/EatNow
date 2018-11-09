@@ -13,9 +13,10 @@ class ApplicationController < ActionController::Base
             items.push(oi)
           end
         end
-        @order_items.push(items)
+        @order_items.push(items) if !items.empty?
       end
     end
+    puts @order_items.to_s
   end
 
   private
