@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_08_072835) do
+ActiveRecord::Schema.define(version: 2018_11_08_171426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,10 +97,8 @@ ActiveRecord::Schema.define(version: 2018_11_08_072835) do
   end
 
   create_table "staffs", force: :cascade do |t|
-    t.string "staff_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type", default: "Staff"
   end
 
   create_table "stalls", force: :cascade do |t|
@@ -121,6 +119,7 @@ ActiveRecord::Schema.define(version: 2018_11_08_072835) do
     t.string "type"
     t.bigint "stall_id"
     t.boolean "admin", default: false
+    t.string "role", default: "customer"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["stall_id"], name: "index_users_on_stall_id"

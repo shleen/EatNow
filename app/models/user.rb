@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  enum user_type: %i[customer owner employee admin]
   has_many :orders
   has_many :cards
   has_many :favourite_items
