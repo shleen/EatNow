@@ -16,6 +16,10 @@
 
 @import 'custom';
 
+* {
+  overflow-x: hidden;
+}
+
 .orders {
   .order-container {
     padding: 20px 30px;
@@ -23,6 +27,6 @@
   }
 
   .order-item {
-
+    position: relative;
   }
 }

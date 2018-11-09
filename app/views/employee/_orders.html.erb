@@ -15,3 +15,13 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  mc = $('.order-item').hammer();
+  mc.on('swipe', function(ev) {
+      $(this).animate({left: $('html').outerWidth()},350, () => {
+          $(this).remove();
+      });
+      console.log(ev);
+  });
+</script>
