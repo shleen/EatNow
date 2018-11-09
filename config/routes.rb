@@ -10,6 +10,5 @@ Rails.application.routes.draw do
   end
 
   resource :collection
-
   resources :order
 end

@@ -1,3 +1,7 @@
+<% if current_user.type == 'Staff' %>
+  <%= render partial: 'employee/orders' %>
+<% else %>
 <p>index.html.erb</p>
 
 <%= link_to "New Order", new_order_path, class: "btn btn-secondary" %>
+<% end %>
