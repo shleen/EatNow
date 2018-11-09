@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="manifest" href="<%= asset_path('manifest.json') %>">
@@ -15,7 +15,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <!-- jQuery -->
-    <link rel="script" href="<%= asset_path 'jquery-3.3.1.min.js' %>">
+    <script src="<%= asset_path 'jquery-3.3.1.min.js' %>"></script>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<%= asset_path 'bootstrap.min.css' %>">
