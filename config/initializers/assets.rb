@@ -13,4 +13,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 Rails.application.config.assets.precompile += %w( bootstrap.min.css bootstrap.min.js
                                                   shards.min.css shards.min.js
-                                                  hammer.min.js jquery.hammer.js )
+                                                  hammer.min.js jquery_hammer.js )
