@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
   def index
     get_order_items if current_user.type == 'Staff'
+
+    # NotifyUserJob.set(wait: 10.seconds).perform_later(Order.first)
   end
 
   private
