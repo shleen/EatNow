@@ -14,4 +14,8 @@ Rails.application.routes.draw do
 
   resource :collection
   resources :order
+
+  resources :order_item do
+    post 'completed', to: 'order_item#completed'
+  end
 end

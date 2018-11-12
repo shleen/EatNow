@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_144351) do
   create_table "staffs", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type", default: "Staff"
   end
 
   create_table "stalls", force: :cascade do |t|
