@@ -12,12 +12,11 @@
       <% if current_user.type == 'Staff' %>
       <% else %>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           temp
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <%= link_to "Make Payment", payment_index_path, class: "dropdown-item", data: { toggle: "modal", target: "#makePayment"} %>
-          <%= link_to "Collect Food", new_collection_path, class: "dropdown-item" %>
         </div>
       </li>
       <li class="nav-item">
