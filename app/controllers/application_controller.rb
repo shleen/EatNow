@@ -14,12 +14,12 @@ class ApplicationController < ActionController::Base
   end
 
   def get_order_items
-    @orders = Order.all.order(created_at: :asc)
+    @orders = Order.where(completed: false).order(created_at: :asc)
     @order_items = []
     @orders.each do |o|
       items = []
       o.order_items.each do |oi|
-        if oi.menu_item.stall_id == current_user.stall_id
+        if (oi.menu_item.stall_id == current_user.stall_id) && !oi.completed
           items.push(oi)
         end
       end
