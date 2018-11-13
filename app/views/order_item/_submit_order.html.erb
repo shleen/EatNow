@@ -1,0 +1,27 @@
+<!-- Modal -->
+<div class="modal fade" id="submitOrder" tabindex="-1" role="dialog" aria-labelledby="submitOrder" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="submitOrder">EatNow</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_for @oi, url: order_item_index_path, method: :post do |f| %>
+      <div class="modal-body">
+        <b><%= @mi.name %></b><br>
+        <div class='form-group mt-2'>
+        <span class='form-label'>Quantity</span>
+        <%= f.number_field :qty, value: '1', class:'form-control', min:'1' %>
+        <%= f.hidden_field :menu_item_id, value: @mi.id %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <%= f.submit "Add to Cart", class:"btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

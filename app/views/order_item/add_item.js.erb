@@ -1,0 +1,5 @@
+$('.modal-backdrop').remove();
+$('.addItem').html("<%= escape_javascript(render 'order_item/submit_order') %>");
+$(() => {
+    $('#submitOrder').modal();
+})

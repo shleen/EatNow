@@ -15,13 +15,16 @@
       </div>
       <!-- View food in different stall -->
       <div class="PO_viewController" width="60%;">
-        <%@menuItems.each do |ml| %>
+        <div class='addItem'></div>
+        <% @menuItems.each do |ml| %>
           <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="..." alt="Actual Food">
             <div class="card-body">
               <h5 class="card-title"><%=ml.name%></h5>
               <p class="card-text">descriptions of food</p>
-              <a href="#" class="btn btn-primary">Order Now</a>
+              <a class="btn btn-primary btn-submit-order" href="/order_item/<%=ml.id%>/add_item" data-remote="true">
+                Order Now
+              </a>
             </div>
           </div>
         <% end %>

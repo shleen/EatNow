@@ -13,4 +13,31 @@ class OrderItemController < ApplicationController
 
     NotifyUserJob.perform_later(oi.order)
   end
+
+  def add_item
+    @mi = MenuItem.find(params[:order_item_id])
+    @oi = OrderItem.new
+  end
+
+  def create
+    if current_user.orders.where(payment_id: nil).first
+      o = current_user.orders.where(payment_id: nil).first
+    else
+      o = Order.new
+    end
+
+    oi = OrderItem.new
+    oi.qty = order_item_params[:qty]
+    oi.menu_item = MenuItem.find(order_item_params[:menu_item_id])
+    oi.order = o
+    oi.save
+
+    puts oi.errors.full_messages
+  end
+
+  private
+
+  def order_item_params
+    params.require(:order_item).permit(:qty, :menu_item_id)
+  end
 end
