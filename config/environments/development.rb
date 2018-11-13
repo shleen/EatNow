@@ -32,7 +32,7 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain
   config.action_cable.url = 'ws://localhost:3000/cable'
-  config.action_cable.allowed_request_origins = [ 'http://localhost:3000', 'http://127.0.0.1:3000', 'https://3919f354.ngrok.io' ]
+  config.action_cable.allowed_request_origins = [ 'http://localhost:3000', 'http://127.0.0.1:3000', 'https://204b1529.ngrok.io' ]
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

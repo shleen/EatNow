@@ -8,7 +8,7 @@
         <div data-toggle="collapse" data-target="#mi_<%=mi.id%>">
           <i class="fa fa-fw fa-caret-down"></i>
           <span class="font-weight-bold"><%=mi.name%></span>
-          <span class="badge badge-secondary float-right"><%= number_to_currency(mi.price) %></span>
+          <span class="badge badge-light float-right"><%= number_to_currency(mi.price) %></span>
         </div>
         <p id="mi_<%=mi.id%>" class='collapse mi_details mt-2'>
           <span class='d-block mb-1'><%= mi.desc %></span
@@ -18,7 +18,7 @@
         </p>
         <div>
           <a href="/order_item/<%=mi.id%>/add_item"
-             class="btn btn-sm btn-light float-right mt-3"
+             class="btn btn-sm btn-secondary float-right mt-3"
              data-remote="true">
             Add to Order
           </a>
