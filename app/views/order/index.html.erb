@@ -3,7 +3,9 @@
   <div class='row'>
     <div class='col-12'>
       <h4 class='text-center m-0'>Your Order</h4>
-      <span class='d-block text-center text-muted mb-3'>Order number <%= @o.hash_id %></span>
+      <% if @o.id %>
+        <span class='d-block text-center text-muted mb-3'>Order number <%= @o.hash_id %></span>
+      <% end %>
     </div>
   </div>
   <div class='row'>
