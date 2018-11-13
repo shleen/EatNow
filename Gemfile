@@ -13,6 +13,10 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'duktape'
+# jQuery, because it doesn't come with rails anymore
+gem 'jquery-rails'
+# Use CoffeeScript for .coffee assets and views
+gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -23,6 +27,10 @@ gem 'dotenv-rails', groups: %i[development test]
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+# Use HTTParty for ez http requests
+gem 'httparty'
+# Use friendly_id to use hash_id
+gem 'friendly_id'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -35,6 +43,9 @@ gem 'devise'
 
 # Use the Stripe gem to facilitate payment with Stripe
 gem 'stripe'
+
+# Use FontAwesome 4 lit icons
+gem 'font-awesome-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

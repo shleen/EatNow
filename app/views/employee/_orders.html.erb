@@ -1,0 +1,47 @@
+<div class='orders'>
+  <div class='row'>
+    <% @order_items.each do |o| %>
+      <div class='col-10 col-md-4 offset-1'>
+        <div class='order-container jumbotron mt-3 mb-0'>
+          <% o.each do |oi| %>
+            <div class='order-item card my-3' data-url="<%= order_item_completed_path(oi.id) %>">
+              <div class='card-body'>
+                <span class='card-text'><%= oi.menu_item.name %> <b>x <%= oi.qty %></b></span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script defer>
+  removeCompletedOrders = () => {
+    $('.order-container').each(function() {
+      if (!$(this).html().trim())
+      {
+        $(this).remove();
+      }
+    })
+  }
+
+  mc = $('.order-item').hammer();
+  mc.on('swipe', function(ev) {
+      const animation = {
+        left: $('html').outerWidth(),
+        background: 'green'
+      }
+      $(this).animate(animation,350, () => {
+          // TODO: Update DB of completed order item/ order
+          $.ajax({
+            url: $(this).data('url'),
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            method: "POST"
+          });
+
+          $(this).remove();
+          removeCompletedOrders();
+      });
+  });
+</script>
