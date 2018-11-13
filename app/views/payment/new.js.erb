@@ -1,0 +1,5 @@
+$('.modal-backdrop').remove();
+$('.payment').html("<%= escape_javascript(render 'payment/new') %>");
+$(() => {
+    $('#makePayment').modal();
+})
