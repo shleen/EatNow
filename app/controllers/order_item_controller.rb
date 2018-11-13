@@ -6,7 +6,7 @@ class OrderItemController < ApplicationController
     oi.order.order_items.each do |i|
       if !i.completed
         puts i.attributes
-        redirect_back fallback_location: root_path and return
+        return
       end
     end
     oi.order.update(completed: true)
