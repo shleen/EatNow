@@ -1,9 +1,27 @@
 <% if current_user.type == 'Staff' %>
   <%= render partial: 'employee/orders' %>
 <% else %>
-<p>index.html.erb</p>
+  <ul class='list-group list-group-flush menu'>
+    <% @menu_items.each do |mi| %>
+      <li class='list-group-item py-4'>
+        <div data-toggle="collapse" data-target="#mi_<%=mi.id%>">
+          <i class="fa fa-fw fa-caret-down"></i>
+          <span class="font-weight-bold"><%=mi.name%></span>
+          <span class="badge badge-secondary float-right"><%= number_to_currency(mi.price) %></span>
+        </div>
+        <p id="mi_<%=mi.id%>" class='collapse mi_details mt-2'>
+          <span class='d-block mb-1'><%= mi.desc %></span
+          <span class='d-block'>Halal: <%= mi.stall.halal ? "Yes" : "No" %></span>
+          <span class='d-block'>Vegetarian: <%= mi.vegetarian ? "Yes" : "No" %></span>
+          <span class='d-block'>Waiting Time: <b><%= mi.waiting_time %> minutes</b></span>
+        </p>
+        <div>
+          <a class="btn btn-sm btn-light float-right mt-3">Add to Order</a>
+        </div>
 
-<%= link_to "New Order", new_order_path, class: "btn btn-secondary" %>
+      </li>
+    <% end %>
+  </ul>
 
   <%= render partial: 'order/notify' %>
 <% end %>

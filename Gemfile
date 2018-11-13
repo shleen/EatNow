@@ -44,6 +44,9 @@ gem 'devise'
 # Use the Stripe gem to facilitate payment with Stripe
 gem 'stripe'
 
+# Use FontAwesome 4 lit icons
+gem 'font-awesome-rails'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

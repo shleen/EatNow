@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :menu_items
+
   resource :collection
   resources :order
 

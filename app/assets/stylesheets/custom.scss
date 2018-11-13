@@ -9,3 +9,19 @@
 .w-auto {
   width: auto !important;
 }
+
+/* Vertically align fontawesome icons */
+.fa {
+  position: relative;
+  top: -1px;
+}
+
+.menu {
+  .mi_details {
+    padding-left: 24px;
+  }
+
+  .badge {
+    padding: .37rem .5rem;
+  }
+}
