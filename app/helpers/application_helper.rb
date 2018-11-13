@@ -8,4 +8,15 @@ module ApplicationHelper
   def iphone?
     request.user_agent =~ /iPhone/i
   end
+
+  # for styling of flash messages
+  def flash_class(level)
+      case level
+          when :error
+          when :alert
+            "alert alert-error"
+          else
+            "alert alert-success"
+      end
+  end
 end

@@ -1,6 +1,7 @@
 <% if current_user.type == 'Staff' %>
   <%= render partial: 'employee/orders' %>
 <% else %>
+  <div class='addItem'></div>
   <ul class='list-group list-group-flush menu'>
     <% @menu_items.each do |mi| %>
       <li class='list-group-item py-4'>
@@ -16,7 +17,11 @@
           <span class='d-block'>Waiting Time: <b><%= mi.waiting_time %> minutes</b></span>
         </p>
         <div>
-          <a class="btn btn-sm btn-light float-right mt-3">Add to Order</a>
+          <a href="/order_item/<%=mi.id%>/add_item"
+             class="btn btn-sm btn-light float-right mt-3"
+             data-remote="true">
+            Add to Order
+          </a>
         </div>
 
       </li>

@@ -24,15 +24,21 @@ class OrderItemController < ApplicationController
       o = current_user.orders.where(payment_id: nil).first
     else
       o = Order.new
+      o.user = current_user
     end
+    o.save
 
     oi = OrderItem.new
     oi.qty = order_item_params[:qty]
     oi.menu_item = MenuItem.find(order_item_params[:menu_item_id])
     oi.order = o
-    oi.save
 
-    puts oi.errors.full_messages
+    if oi.save
+      flash[:success] = "Order item added successfully!"
+    else
+      flash[:error] = "Something went wrong... Please try again..."
+    end
+    redirect_back fallback_location: root_path
   end
 
   private

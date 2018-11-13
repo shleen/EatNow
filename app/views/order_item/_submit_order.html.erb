@@ -12,7 +12,7 @@
       <div class="modal-body">
         <b><%= @mi.name %></b><br>
         <div class='form-group mt-2'>
-        <span class='form-label'>Quantity</span>
+        <label>Quantity</label>
         <%= f.number_field :qty, value: '1', class:'form-control', min:'1' %>
         <%= f.hidden_field :menu_item_id, value: @mi.id %>
         </div>
