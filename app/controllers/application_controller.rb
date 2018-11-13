@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   def index
     get_order_items if current_user.type == 'Staff'
+    @menu_items = MenuItem.all
   end
 
   private
