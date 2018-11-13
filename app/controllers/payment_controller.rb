@@ -11,6 +11,6 @@ class PaymentController < ApplicationController
   private
 
   def payment_params
-    params.permit(:stripeToken, :amt)
+    params.permit(:stripeToken, :order_id)
   end
 end

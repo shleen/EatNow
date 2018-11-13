@@ -1,15 +1,25 @@
 <!-- Checkout Container -->
 <div class="checkoutMainContainer">
-    <title><h4>Eat Now.</h4></title>
+    <div class="payment"></div>
     <form class="checkoutformContainer">
-        <% @o.order_items.each do |oi| %>
-        <ul>
-            <li><%= oi.menu_item.name %> <%= oi.qty %>
-        </ul>
-        <ul>
-            <li>CheckOut</i>
-            <li>Cancel</i>
-        </ul>
-        <% end %>
+        <div class="checkoutTitle">
+            <h4>Cart Item</h4>
+        </div>
+        <div class="cartItem" style="width:80rem">
+            <% @o.order_items.each do |oi| %>
+            <!-- Output all orders have been selected. -->
+            <ul>
+                <%= oi.menu_item.name %> <%= oi.qty %>
+            </ul>
+            <% end %>
+            <!-- Total Price -->
+            <ul>
+                <h5>Total: <%= number_to_currency(@total) %></h5>
+            </ul>
+            <ul>
+                <a href="<%= new_order_path %>" class="btn btn-primary">Back To Order</a>
+                <a href="<%= new_payment_path(order_id: @o.hash_id) %>" class="btn btn-primary" data-remote="true">Proceed to payment</a>
+            </ul>
+        </div>
     </form>
 </div>

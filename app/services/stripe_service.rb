@@ -14,8 +14,9 @@ class StripeService
   private
 
   def bill(params)
+    amt = ((Order.find_by(hash_id: params[:order_id]).get_total).to_f*100).to_i
     Stripe::Charge.create(
-      :amount => ((params[:amt]).to_f*100).to_i,
+      :amount => amt,
       :currency => "sgd",
       :source => params[:stripeToken], # obtained with Stripe.js
       :description => "Test for #{@user.email}"
