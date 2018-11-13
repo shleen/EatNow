@@ -1,0 +1,15 @@
+<!-- Checkout Container -->
+<div class="checkoutMainContainer">
+    <title><h4>Eat Now.</h4></title>
+    <form class="checkoutformContainer">
+        <% @o.order_items.each do |oi| %>
+        <ul>
+            <li><%= oi.menu_item.name %> <%= oi.qty %>
+        </ul>
+        <ul>
+            <li>CheckOut</i>
+            <li>Cancel</i>
+        </ul>
+        <% end %>
+    </form>
+</div>
