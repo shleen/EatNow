@@ -1,0 +1,93 @@
+<div class='container mt-3'>
+  <h4 class='m-0'>Payment of <%= number_to_currency(@o.get_total) %></h4>
+  <span class='text-muted d-inline-block mb-4'>Order number <%= @o.hash_id %></span>
+  <%= form_tag payment_index_path, method: :post, id:"pay" do %>
+    <span class="payment-errors"></span>
+
+    <div class='row'>
+        <div class='col-12'>
+          <div class="form-group">
+            <label>Card Number</label>
+            <input type="text" size="20" data-stripe="number" class="form-control">
+          </div>
+        </div>
+    </div>
+
+    <div class='row'>
+      <div class="col-6">
+        <div class="form-group">
+          <label>Expiration (MM/YY)</label><br />
+          <input type="text" size="2" data-stripe="exp_month" class="form-control w-auto d-inline-block px-2">
+          <span> / </span>
+          <input type="text" size="2" data-stripe="exp_year" class="form-control w-auto d-inline-block px-2">
+        </div>
+
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label>CVC</label>
+          <input type="text" size="4" data-stripe="cvc" class="form-control w-auto">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label>Billing ZIP Code</label>
+            <input type="text" data-stripe="address_zip" class="form-control">
+          </div>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-12'>
+          <%= hidden_field_tag :order_id, params[:order_id] %>
+          <%= submit_tag "Pay", class: "btn btn-secondary submit w-100" %>
+        </div>
+    </div>
+  <% end %>
+</div>
+
+<!-- Stripe -->
+<script src="https://js.stripe.com/v2/"></script>
+<script defer>
+  $(function() {
+    Stripe.setPublishableKey("pk_test_4pr3WUC23dR5KqMMw6vpJw0z");
+
+    var $form = $('#pay');
+    $form.submit(function(event) {
+      // Disable the submit button to prevent repeated clicks:
+      $form.find('.submit').prop('disabled', true);
+
+      // Request a token from Stripe:
+      Stripe.card.createToken($form, stripeResponseHandler);
+
+      // Prevent the form from being submitted:
+      return false;
+    });
+  });
+
+  function stripeResponseHandler(status, response) {
+    // Grab the form:
+    var $form = $('#pay');
+
+    if (response.error) { // Problem!
+
+      // Show the errors on the form:
+      $form.find('.payment-errors').text(response.error.message);
+      $form.find('.submit').prop('disabled', false); // Re-enable submission
+
+    } else { // Token was created!
+
+      // Get the token ID:
+      var token = response.id;
+
+      // Insert the token ID into the form so it gets submitted to the server:
+      $form.append($('<input type="hidden" name="stripeToken">').val(token));
+
+      // Submit the form:
+      $form.get(0).submit();
+    }
+  };
+</script>

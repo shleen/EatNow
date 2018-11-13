@@ -1,7 +1,12 @@
 class PaymentController < ApplicationController
+  def new
+    @o = Order.find_by(hash_id: params[:order_id])
+  end
+
   def create
     StripeService.new(User.first).make_payment(payment_params)
 
+    
     redirect_back fallback_location: root_path
   end
 
