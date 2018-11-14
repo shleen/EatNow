@@ -13,6 +13,8 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require cable
+//= require channels/order
 
 // Auto close flash message
 function autoCloseFlash() {
