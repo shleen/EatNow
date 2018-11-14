@@ -4,8 +4,8 @@
   <div class='addItem'></div>
   <ul class='list-group list-group-flush menu'>
     <% @menu_items.each do |mi| %>
-      <li class='list-group-item py-4'>
-        <div data-toggle="collapse" data-target="#mi_<%=mi.id%>">
+      <li class='list-group-item py-4' data-toggle="collapse" data-target="#mi_<%=mi.id%>">
+        <div>
           <i class="fa fa-fw fa-caret-down"></i>
           <span class="font-weight-bold"><%=mi.name%></span>
           <span class="badge badge-light float-right"><%= number_to_currency(mi.price) %></span>

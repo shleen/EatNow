@@ -11,10 +11,10 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require jquery
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require cable
+//= require channels/order
 
 // Auto close flash message
 function autoCloseFlash() {
