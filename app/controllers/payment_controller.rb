@@ -9,7 +9,7 @@ class PaymentController < ApplicationController
     if res[:status] == 'success'
       payment = Payment.create(amt: @o.get_total)
 
-      @o.update(completed: true, payment_id: payment.id)
+      @o.update(completed: false, payment_id: payment.id)
     end
 
     flash["#{res[:status]}"] = res[:message]
