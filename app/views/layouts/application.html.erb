@@ -55,16 +55,5 @@
     <% end %>
 
     <%= yield %>
-
-    <script>
-      <% if true %>
-        cable = ActionCable.createConsumer();
-        subscription = cable.subscriptions.create({ channel: 'OrderChannel' }, {
-          received: function(data) {
-            $('#notifyOrderReady').modal();
-          },
-        });
-      <% end %>
-    </script>
   </body>
 </html>
