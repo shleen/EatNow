@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
   private
 
   def set_up_instance_variables
-    # Raspberry PI URL
-    @RPI = "https://httpbin.org/post"
+    # Robob
+    @r = Robob.first
   end
 
   def get_order_items

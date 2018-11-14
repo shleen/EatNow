@@ -21,7 +21,7 @@ class CollectionsController < ApplicationController
       }
     }
 
-    res = HTTParty.post(@RPI, options)
+    res = HTTParty.post(@r.url, options)
     puts res.body
 
     redirect_back fallback_location: root_path
