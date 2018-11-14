@@ -9,6 +9,9 @@ class MenuItemController < ApplicationController
     m = MenuItem.new
     m.update(stall_id: current_user.stall_id)
     m.update(menu_item_params)
+
+    flash[:notice] = "Menu item added!"
+    redirect_back fallback_location: root_path
   end
 
   private

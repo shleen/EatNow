@@ -3,5 +3,4 @@ jQuery(document).on 'turbolinks:load', ->
 
   App.order = App.cable.subscriptions.create "OrderChannel",
   received: (data) ->
-    $notify.modal
-    console.log data.order.id
+    $notify.modal()
