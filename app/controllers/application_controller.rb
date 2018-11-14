@@ -20,10 +20,7 @@ class ApplicationController < ActionController::Base
     @orders.each do |o|
       items = []
       o.order_items.each do |oi|
-        puts oi.menu_item.name
-        puts oi.qty
         if (oi.menu_item.stall_id == current_user.stall_id) && !oi.completed
-          puts "added!"
           items.push(oi)
         end
       end
