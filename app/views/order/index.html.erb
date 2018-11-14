@@ -1,0 +1,44 @@
+<div class='container mt-3'>
+  <div class='payment'></div>
+  <div class='row'>
+    <div class='col-12'>
+      <h4 class='text-center m-0'>Your Order</h4>
+      <% if @o.id %>
+        <span class='d-block text-center text-muted mb-3'>Order number <%= @o.hash_id %></span>
+      <% end %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-12'>
+      <ul class='list-group list-group-flush'>
+        <!-- Output all order items that have been added to the order -->
+        <% @o.order_items.each do |oi| %>
+          <li class='list-group-item py-3'>
+            <span class="badge badge-secondary badge-pill"><%= oi.qty %></span>
+            <span class='ml-2'><%= oi.menu_item.name %></span>
+            <span class='float-right'><%= number_to_currency(oi.get_total) %></span>
+          </li>
+        <% end %>
+
+        <li class='list-group-item py-4'>
+          <h5 class='m-0'>
+            <span class='badge'>.</span>
+            <span class='ml-2'>Total</span>
+            <span class='float-right'><%= number_to_currency(@total) %></span>
+          </h5>
+        </li>
+        <li class='list-group-item'></li>
+      </ul>
+    </div>
+  </div>
+  <div class='row'>
+      <div class='col-12'>
+        <a href="<%= new_payment_path(order_id: @o.hash_id) %>" class="btn btn-secondary float-right">Proceed to payment</a>
+      </div>
+  </div>
+  <div class='row my-3'>
+    <div class='col-12'>
+      <a href="<%= root_path %>" class="btn btn-outline-light float-right">Back To Order</a>
+    </div>
+  </div>
+</div>

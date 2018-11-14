@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   resource :collection
   resources :order
 
-  resources :order_item do
+  resources :order_item do 
     post 'completed', to: 'order_item#completed'
+    get 'add_item', to: 'order_item#add_item'
   end
 end
