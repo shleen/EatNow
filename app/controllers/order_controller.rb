@@ -5,13 +5,4 @@ class OrderController < ApplicationController
 
     @total = @o ? @o.get_total : 0
   end
-
-  def new
-    @stallList = Stall.all
-    @menuItems = MenuItem.all
-    o = Order.new
-    o.user = current_user
-    o.payment = Payment.new
-    o.save
-  end
 end

@@ -11,21 +11,10 @@
       </li>
       <% if current_user.type == 'Staff' %>
       <% else %>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          temp
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Make Payment", payment_index_path, class: "dropdown-item", data: { toggle: "modal", target: "#makePayment"} %>
-        </div>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Create Order", new_order_path, class: "nav-link" %>
-      </li>
       <li class="nav-item">
         <%= link_to "Checkout", order_index_path, class: "nav-link" %>
       </li>
-     
+
       <% end %>
       <% if current_user.admin %>
         <li class='nav-item'><a class='nav-link text-danger'>Admin</a></li>
