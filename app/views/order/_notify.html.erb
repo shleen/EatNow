@@ -1,0 +1,37 @@
+<div class="modal fade" id="notifyOrderReady" tabindex="-1" role="dialog" aria-labelledby="notifyOrderReady" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="notifyOrderReady">Your order is ready!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Hey! Your order is ready! You can head to any collection point now :-)
+        Click the button below once you've arrived.
+        <div class='collection-points mb-3'>
+          <div class='row mt-3'>
+            <div class='col-md-12'>
+              <h6>Select the collection point you're at!</h6>
+            </div>
+            <% @o = current_user.orders.first %>
+            <% @o = Order.new if @o.nil? %>
+            <% CollectionPoint.all.each do |c| %>
+              <div class='col-6 mt-2'>
+                <%= link_to c.number, collection_path(number: c.number, order_id: @o.hash_id), method: :post, class: "btn btn-secondary w-75" %>
+              </div>
+            <% end %>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-collection-point">I'm here!</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $('button.btn-collection-point').on('click', () => {
+    $('.collection-points').show();
+  });
+</script>

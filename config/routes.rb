@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'application#index'
 
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => '/cable'
+
   devise_for :users
 
   resources :payment do
@@ -8,12 +11,14 @@ Rails.application.routes.draw do
       post 'create_card'
     end
   end
-<<<<<<< HEAD
-  resources :menu_items
-=======
+
+  resources :menu_item
 
   resource :collection
-
   resources :order
->>>>>>> af95c7581d3d22707fdcaac1e712ec676ef1268a
+
+  resources :order_item do
+    post 'completed', to: 'order_item#completed'
+    get 'add_item', to: 'order_item#add_item'
+  end
 end

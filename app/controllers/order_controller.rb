@@ -1,12 +1,8 @@
 class OrderController < ApplicationController
-  def new
-    o = Order.new
+  def index
+    @o = current_user.orders.where(payment_id: nil).first
+    @o = Order.new if !@o
 
-    o.price = rand(1..10)
-    o.user = current_user
-
-    o.save
-
-    redirect_back fallback_location: root_path
+    @total = @o ? @o.get_total : 0
   end
 end

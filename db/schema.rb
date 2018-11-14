@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2018_11_08_014840) do
-=======
-ActiveRecord::Schema.define(version: 2018_11_08_072835) do
->>>>>>> af95c7581d3d22707fdcaac1e712ec676ef1268a
+ActiveRecord::Schema.define(version: 2018_11_14_025247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,24 +43,15 @@ ActiveRecord::Schema.define(version: 2018_11_08_072835) do
   end
 
   create_table "menu_items", force: :cascade do |t|
-<<<<<<< HEAD
-    t.string "name", null: false
-    t.float "price", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "halal", default: false
-    t.boolean "vegetarian", default: false
-    t.string "desc"
-    t.integer "waiting_time"
-=======
     t.string "name"
     t.float "price"
-    t.integer "waiting_time"
     t.boolean "vegetarian"
     t.string "desc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "stall_id"
+    t.integer "waiting_time"
+    t.string "type"
     t.index ["stall_id"], name: "index_menu_items_on_stall_id"
   end
 
@@ -75,6 +62,7 @@ ActiveRecord::Schema.define(version: 2018_11_08_072835) do
     t.datetime "updated_at", null: false
     t.bigint "order_id"
     t.bigint "menu_item_id"
+    t.boolean "completed", default: false
     t.index ["menu_item_id"], name: "index_order_items_on_menu_item_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
@@ -86,6 +74,7 @@ ActiveRecord::Schema.define(version: 2018_11_08_072835) do
     t.bigint "user_id"
     t.bigint "collection_point_id"
     t.bigint "payment_id"
+    t.boolean "completed", default: false
     t.index ["collection_point_id"], name: "index_orders_on_collection_point_id"
     t.index ["hash_id"], name: "index_orders_on_hash_id"
     t.index ["payment_id"], name: "index_orders_on_payment_id"
@@ -108,11 +97,9 @@ ActiveRecord::Schema.define(version: 2018_11_08_072835) do
     t.bigint "user_id"
     t.index ["menu_item_id"], name: "index_ratings_on_menu_item_id"
     t.index ["user_id"], name: "index_ratings_on_user_id"
->>>>>>> af95c7581d3d22707fdcaac1e712ec676ef1268a
   end
 
   create_table "staffs", force: :cascade do |t|
-    t.string "staff_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type", default: "Staff"
@@ -136,6 +123,7 @@ ActiveRecord::Schema.define(version: 2018_11_08_072835) do
     t.string "type"
     t.bigint "stall_id"
     t.boolean "admin", default: false
+    t.string "role", default: "customer"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["stall_id"], name: "index_users_on_stall_id"

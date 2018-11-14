@@ -1,7 +1,5 @@
 class CollectionsController < ApplicationController
   def new
-    @collection_points = CollectionPoint.all
-    @o = Order.new
   end
 
   def create

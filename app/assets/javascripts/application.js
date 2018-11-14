@@ -14,3 +14,44 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// Auto close flash message
+function autoCloseFlash() {
+  if ($('.alert').length > 0) {
+    setTimeout(function() {
+      $(".alert").fadeTo(500, 0, function() {
+        $(this).remove()
+      });
+    }, 3000);
+  }
+}
+
+// Auto scroll flash message
+function autoPositionFlash() {
+  if ($('.alert').length > 0) {
+    positionFlash();
+
+    scrollPositionFlash();
+  }
+}
+
+function scrollPositionFlash() {
+  $(window).on('scroll', function() {
+    positionFlash();
+  });
+}
+
+function positionFlash() {
+  if ($('.xhr-alert').length > 0) {
+    scrollTop = $(window).scrollTop() + 56;
+    $('.alert').css("top", scrollTop + 'px');
+  } else {
+    scrollTop = $(window).scrollTop() + 9;
+    $('.alert').css("top", scrollTop + 'px');
+  }
+}
+
+$(document).on('turbolinks:load', function() {
+  autoPositionFlash();
+  autoCloseFlash();
+});

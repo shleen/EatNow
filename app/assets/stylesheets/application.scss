@@ -14,4 +14,16 @@
  *= require_self
  */
 
-@import 'custom'
+@import "font-awesome";
+@import 'custom';
+
+.orders {
+  .order-container {
+    padding: 20px 30px;
+    background-color: #e9ecef;
+  }
+
+  .order-item {
+    position: relative;
+  }
+}

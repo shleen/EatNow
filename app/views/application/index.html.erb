@@ -1,112 +1,32 @@
-<p>index.html.erb</p>
-<<<<<<< HEAD
-<%= link_to "Menu Item", new_menu_item_path %>
-<!-- Modal for payment -->
-<div class="modal fade" id="makePayment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Amount to pay</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <%= form_tag payment_index_path, method: :post, id:"pay" do %>
-        <div class="modal-body">
-          <span class="payment-errors"></span>
-
-          <div class="form-group">
-            <label>Card Number</label>
-            <span class="badge badge-light float-right">
-              Find test card info
-              <a href="https://stripe.com/docs/testing#cards" target="_blank">here</a>.
-            </span>
-            <input type="text" size="20" data-stripe="number" class="form-control">
-          </div>
-
-          <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label class="d-block">Expiration (MM/YY)</label>
-                    <input type="text" size="2" data-stripe="exp_month" class="form-control w-auto d-inline-block">
-                    <span> / </span>
-                    <input type="text" size="2" data-stripe="exp_year" class="form-control w-auto d-inline-block">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>CVC</label>
-                  <input type="text" size="4" data-stripe="cvc" class="form-control">
-                </div>
-              </div>
-          </div>
-
-          <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Billing ZIP Code</label>
-                  <input type="text" size="6" data-stripe="address_zip" class="form-control">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Amount (SGD)</label>
-                  <input type="text" value="9.99" class="form-control" />
-                </div>
-              </div>
-          </div>
+<% if current_user.type == 'Staff' %>
+  <%= render partial: 'employee/orders' %>
+<% else %>
+  <div class='addItem'></div>
+  <ul class='list-group list-group-flush menu'>
+    <% @menu_items.each do |mi| %>
+      <li class='list-group-item py-4'>
+        <div data-toggle="collapse" data-target="#mi_<%=mi.id%>">
+          <i class="fa fa-fw fa-caret-down"></i>
+          <span class="font-weight-bold"><%=mi.name%></span>
+          <span class="badge badge-light float-right"><%= number_to_currency(mi.price) %></span>
         </div>
-        <div class="modal-footer">
-          <%= submit_tag "Proceed to checkout", class: "btn btn-secondary submit" %>
+        <p id="mi_<%=mi.id%>" class='collapse mi_details mt-2'>
+          <span class='d-block mb-1'><%= mi.desc %></span
+          <span class='d-block'>Halal: <%= mi.stall.halal ? "Yes" : "No" %></span>
+          <span class='d-block'>Vegetarian: <%= mi.vegetarian ? "Yes" : "No" %></span>
+          <span class='d-block'>Waiting Time: <b><%= mi.waiting_time %> minutes</b></span>
+        </p>
+        <div>
+          <a href="/order_item/<%=mi.id%>/add_item"
+             class="btn btn-sm btn-secondary float-right mt-3"
+             data-remote="true">
+            Add to Order
+          </a>
         </div>
-      <% end %>
-    </div>
-  </div>
-</div>
 
-<!-- Stripe -->
-<script src="https://js.stripe.com/v2/"></script>
-<script>
-  $(function() {
-    Stripe.setPublishableKey("pk_test_4pr3WUC23dR5KqMMw6vpJw0z");
+      </li>
+    <% end %>
+  </ul>
 
-    var $form = $('#pay');
-    $form.submit(function(event) {
-      // Disable the submit button to prevent repeated clicks:
-      $form.find('.submit').prop('disabled', true);
-
-      // Request a token from Stripe:
-      Stripe.card.createToken($form, stripeResponseHandler);
-
-      // Prevent the form from being submitted:
-      return false;
-    });
-  });
-
-  function stripeResponseHandler(status, response) {
-    // Grab the form:
-    var $form = $('#pay');
-
-    if (response.error) { // Problem!
-
-      // Show the errors on the form:
-      $form.find('.payment-errors').text(response.error.message);
-      $form.find('.submit').prop('disabled', false); // Re-enable submission
-
-    } else { // Token was created!
-
-      // Get the token ID:
-      var token = response.id;
-
-      // Insert the token ID into the form so it gets submitted to the server:
-      $form.append($('<input type="hidden" name="stripeToken">').val(token));
-
-      // Submit the form:
-      $form.get(0).submit();
-    }
-  };
-</script>
-=======
-
-<%= link_to "New Order", new_order_path, class: "btn btn-secondary" %>
->>>>>>> af95c7581d3d22707fdcaac1e712ec676ef1268a
+  <%= render partial: 'order/notify' %>
+<% end %>

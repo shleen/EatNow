@@ -9,3 +9,59 @@
 .w-auto {
   width: auto !important;
 }
+
+/* Vertically align fontawesome icons */
+.fa {
+  position: relative;
+  top: -1px;
+}
+
+.menu {
+  .mi_details {
+    padding-left: 24px;
+  }
+
+  .badge {
+    padding: .37rem .5rem;
+  }
+}
+
+  .alert {
+    padding: 15px 15px 15px 0 !important;
+    position: fixed !important;
+    right: 10px;
+    top: 9px;
+    width: 30%;
+    z-index: 999999999999999;
+
+    .value {
+      margin-left: 20px;
+    }
+
+    .close {
+      position: relative;
+      bottom: 3px;
+      color: #fff !important;
+      opacity: 1 !important;
+    }
+
+    @media (max-width: 320px) {
+      width: 80%;
+    }
+
+    @media (min-width: 321px) and (max-width: 576px) {
+      width: 70%;
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      width: 50%;
+    }
+
+    @media (min-width: 1024px) and (max-width: 1219px) {
+      width: 40%
+    }
+
+    @media (min-width: 1920px) {
+      width: 25%;
+    }
+  }
