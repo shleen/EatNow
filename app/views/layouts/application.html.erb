@@ -47,13 +47,13 @@
     <!-- Don't load navbar on Devise views -->
     <% if !current_class?('users') %>
       <%= render 'navigation/navbar' %>
-
-      <!-- Always render notify modal for users (minus devise) -->
-      <% if current_user.type != 'Staff' %>
-        <%= render partial: 'order/notify' %>
-      <% end %>
     <% end %>
 
     <%= yield %>
+
+    <!-- Always render notify modal for users (minus devise) -->
+    <% if current_user.type != 'Staff' %>
+      <%= render partial: 'order/notify' %>
+    <% end %>
   </body>
 </html>
