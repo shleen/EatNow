@@ -14,7 +14,7 @@ class MenuItemController < ApplicationController
   private
 
   def menu_item_params
-    params.permit(:name, :price, :waiting_time, :vegetarian, :desc)
+    params.require(:menu_item).permit(:name, :price, :waiting_time, :vegetarian, :desc)
   end
 
   def get_menu_item_types

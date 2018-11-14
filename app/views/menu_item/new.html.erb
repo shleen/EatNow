@@ -13,32 +13,21 @@
 
     <div class='form-group'>
       <label>Average waiting time (minutes)</label>
-      <%= f.number_field :waiting_time, min: '0' %>
+      <%= f.number_field :waiting_time, min: '0', class: 'form-control' %>
     </div>
 
     <div class='form-group'>
       <label>Item Type</label>
-      <%= f.select :type, options_for_select(@mi_types), class: 'form-control' %>
+      <%= f.select :type, options_for_select(@mi_types), {}, class: 'form-control' %>
     </div>
-    <tr>
-      <th>Item type: </th>
-      <td>
-        <select name="iType">
-          <option value="food">Food</option>
-          <option value="drink">Drink</option>
-          <option value="snack">Snack</option>
-          <option value="combo">Combo</option>
-          <option value="other">Other</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <th></th>
-      <td>
-        <input type="checkbox" name="vegetarian" value="vegetarian">Vegetarian<br>
-      </td>
-    </tr>
-  </table>
-  <input type="submit">
+
+    <div class='form-group custom-control custom-checkbox mt-4'>
+      <%= f.check_box :vegetarian, class: 'custom-control-input', id: 'vegetarian' %>
+      <label class='custom-control-label' for='vegetarian'>Vegetarian</label>
+    </div>
+
+    <div class='form-group mt-3'>
+        <%= f.submit "Add", class: 'btn btn-secondary w-100' %>
+    </div>
   <% end %>
 </div>
