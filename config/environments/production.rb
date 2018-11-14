@@ -46,6 +46,9 @@ Rails.application.configure do
   config.action_cable.url = 'wss://np-eatnow.herokuapp.com/cable'
   config.action_cable.allowed_request_origins = [ 'http://np-eatnow.herokuapp.com', 'https://np-eatnow.herokuapp.com' ]
 
+  config.web_socket_server_url = "wss://np-eatnow.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://np-eatnow.herokuapp.com', 'http://np-eatnow.herokuapp.com']
+
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
