@@ -52,7 +52,7 @@
     <%= yield %>
 
     <!-- Always render notify modal for users (minus devise) -->
-    <% if current_user.type != 'Staff' %>
+    <% if !current_class?('users') && current_user.type != 'Staff' %>
       <%= render partial: 'order/notify' %>
     <% end %>
   </body>
