@@ -10,6 +10,11 @@
         <a class="nav-link" href="<%= root_path %>">Home<span class="sr-only">(current)</span></a>
       </li>
       <% if current_user.type == 'Staff' %>
+        <% if current_user.role == 'owner' %>
+          <li class='nav-item'>
+            <%= link_to "Add Menu Item", new_menu_item_path, class: 'nav-link' %>
+          </li>
+        <% end %>
       <% else %>
       <li class="nav-item">
         <%= link_to "Checkout", order_index_path, class: "nav-link" %>

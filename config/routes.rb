@@ -12,12 +12,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :menu_items
+  resources :menu_item
 
   resource :collection
   resources :order
 
-  resources :order_item do 
+  resources :order_item do
     post 'completed', to: 'order_item#completed'
     get 'add_item', to: 'order_item#add_item'
   end
