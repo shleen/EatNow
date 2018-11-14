@@ -7,4 +7,7 @@ test:
 production:
   adapter: redis
   url: <%= ENV['REDISCLOUD_URL'] %>
+  host: spinyfin.redistogo.com
+  port: 11373
+  password: fe750cd9af0e37f3fa82d00c8816cd67
   channel_prefix: eatnow_production
