@@ -26,4 +26,10 @@
       </li>
     <% end %>
   </ul>
+
+  <script>
+    $('li[data-toggle="collapse"]').on('click', function() {
+      $(this.data('target')).toggle();
+    });
+  </script>
 <% end %>
