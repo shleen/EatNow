@@ -49,6 +49,11 @@
       <%= render 'navigation/navbar' %>
     <% end %>
 
+    <!-- Always render notify modal for users -->
+    <% if current_user.type != 'Staff' %>
+      <%= render partial: 'order/notify' %>
+    <% end %>
+
     <%= yield %>
 
     <script>
