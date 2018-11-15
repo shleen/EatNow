@@ -35,6 +35,7 @@ class OrderItemController < ApplicationController
 
     if oi.save
       flash[:success] = "Order item added successfully!"
+      RefreshOrderItemJob(oi)
     else
       flash[:error] = "Something went wrong... Please try again..."
     end
