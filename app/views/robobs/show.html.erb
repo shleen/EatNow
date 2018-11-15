@@ -1,0 +1,23 @@
+<div class='container vertical-center navbar-offset'>
+  <%= form_tag move_robob_path, method: :post do %>
+      <div class='row'>
+        <div class='col-6'>
+          <div class='form-group'>
+              <label>x</label>
+              <%= text_field_tag :x, '', class: 'form-control' %>
+          </div>
+        </div>
+        <div class='col-6'>
+          <div class='form-group'>
+              <label>y</label>
+              <%= text_field_tag :y, '', class: 'form-control' %>
+          </div>
+        </div>
+        <div class='col-12'>
+            <div class='form-group'>
+              <%= submit_tag 'Go!', class: 'btn btn-secondary w-100' %>
+            </div>
+        </div>
+      </div>
+    <% end %>
+</div>

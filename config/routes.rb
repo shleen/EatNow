@@ -21,5 +21,7 @@ Rails.application.routes.draw do
   resources :order
 
   resource :collection
-  resource :robob
+  resource :robob do
+    post 'move', to: 'robobs#move'
+  end
 end
