@@ -1,9 +1,9 @@
 class OrderChannel < ApplicationCable::Channel
   def subscribed
     if current_user.type == 'Staff'
-      stream_from "user_order_channel#{current_user.stall_id}"
+      stream_from "staff_order_channel#{current_user.stall_id}"
     else
-      stream_from "staff_order_channel#{current_user.id}"
+      stream_from "user_order_channel#{current_user.id}"
     end
   end
 end
