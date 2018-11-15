@@ -1,0 +1,19 @@
+jQuery(document).on 'turbolinks:load', ->
+  $notify = $('#notifyOrderReady')
+
+  App.order = App.cable.subscriptions.create "OrderChannel",
+  received: (data) ->
+    console.log data
+    if data.for == 'customer'
+      $notify.modal();
+    else if data.form == 'staff'
+      console.log data
+      $orderContainer = $('.orderContainer')
+      data.items.each((oi) ->
+        li = "<div class='order-item card my-3' data-url='/order_item/" + oi.id + "/completed'>
+                <div class='card-body'>
+                  <span class='card-text'>" + oi.menu_item.name + "<b>x " + oi.qty + "</b></span>
+                </div>
+              </div>"
+        $orderContainer.append li
+      )

@@ -10,6 +10,8 @@ class PaymentController < ApplicationController
       payment = Payment.create(amt: @o.get_total)
 
       @o.update(completed: false, payment_id: payment.id)
+
+      broadcast_new_order
     end
 
     flash["#{res[:status]}"] = res[:message]
@@ -27,5 +29,21 @@ class PaymentController < ApplicationController
 
   def payment_params
     params.permit(:stripeToken, :order_id)
+  end
+
+  def broadcast_new_order
+    stalls = {}
+
+    @o.order_items.each do |oi|
+      if stalls[oi.menu_item.stall_id].nil?
+        stalls[oi.menu_item.stall_id] = [oi]
+      else
+        stalls[oi.menu_item.stall_id].push oi
+      end
+    end
+
+    stalls.each do |stall_id, items|
+      RefreshOrderItemJob.perform_later(stall_id, items)
+    end
   end
 end
