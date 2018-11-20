@@ -15,6 +15,7 @@
 //= require bootstrap.min
 //= require hammer.min
 //= require jquery.hammer.min
+//= require shards.min
 //= require activestorage
 //= require turbolinks
 //= require cable
