@@ -30,10 +30,8 @@
   mc.on('swipe', function(ev) {
       const animation = {
         left: $('html').outerWidth(),
-        background: 'green'
       }
       $(this).animate(animation,350, () => {
-          // TODO: Update DB of completed order item/ order
           $.ajax({
             url: $(this).data('url'),
             beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},

@@ -41,6 +41,10 @@ class OrderItemController < ApplicationController
     redirect_back fallback_location: root_path
   end
 
+  def destroy
+    OrderItem.find(params[:id]).destroy
+  end
+
   private
 
   def order_item_params
