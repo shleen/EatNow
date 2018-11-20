@@ -32,6 +32,8 @@ gem 'httparty'
 # Use friendly_id to use hash_id
 gem 'friendly_id'
 
+gem "rack", ">= 2.0.6"
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
